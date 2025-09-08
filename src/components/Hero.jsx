@@ -19,11 +19,28 @@ const Hero = ({ onCTAClick }) => {
   }, [images.length]);
 
   return (
-    <section className="hero relative bg-gradient-to-br from-slate-900 via-green-900 to-amber-900 min-h-screen flex items-center pt-20 text-white overflow-hidden">
+    <section className="hero relative bg-gradient-to-br from-slate-900 via-slate-800 to-amber-900 min-h-screen flex items-center pt-20 text-white overflow-hidden">
+      {/* Badge de desarrollador */}
+      <div className="absolute top-24 right-4 md:top-28 md:right-8 z-30">
+        <a 
+          href="https://devcraftpablo.online/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 border border-white/20 hover:border-white/40 hover:scale-105 shadow-lg"
+        >
+          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+          <span>Desarrollado por</span>
+          <span className="font-semibold text-amber-200">Pablo Proboste</span>
+          <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+
       {/* Efectos de fondo decorativos */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10"></div>
       <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-slate-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div className="hero-content text-center md:text-left">

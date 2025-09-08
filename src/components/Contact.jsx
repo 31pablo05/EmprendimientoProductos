@@ -131,6 +131,31 @@ const Contact = () => (
           </div>
         </div>
       </div>
+
+      {/* Footer de desarrollador */}
+      <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-50 to-white px-6 py-3 rounded-2xl shadow-md border border-gray-100">
+            <span className="text-gray-600 text-sm">Desarrollado con</span>
+            <span className="text-red-500 text-lg animate-pulse">❤️</span>
+            <span className="text-gray-600 text-sm">por</span>
+            <a 
+              href="https://devcraftpablo.online/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors duration-300 hover:underline flex items-center gap-1"
+            >
+              <span>Pablo Proboste</span>
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+          <p className="text-xs text-gray-500 mt-3">
+            💻 Desarrollo web profesional • 🍕 Productos artesanales de calidad
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 );
