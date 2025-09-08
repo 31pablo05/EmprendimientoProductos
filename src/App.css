@@ -1,10 +1,5 @@
 
 
-.hero {
-  /* Hero Section styles */
-  background: linear-gradient(135deg, var(--primary) 0%, #70e000 60%, var(--secondary) 100%);
-}
-
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -28,6 +23,81 @@
   0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
   40% { transform: translateY(-10px); }
   60% { transform: translateY(-5px); }
+}
+
+/* Mejoras para productos */
+.product-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.product-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.product-card .product-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card .product-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.product-card:hover .product-image::before {
+  transform: translateX(100%);
+}
+
+/* Efectos de shimmer para skeleton */
+@keyframes shimmer {
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Mejoras de botones */
+.add-btn {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.add-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.add-btn:hover::before {
+  left: 100%;
+}
+
+/* Z-index management para botones flotantes */
+.whatsapp-btn {
+  z-index: 30 !important;
+}
+
+.cart-indicator {
+  z-index: 35 !important;
 }
 
 /* Responsive helpers */
@@ -83,7 +153,7 @@ body {
 
   /* Hero Section */
   .hero {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, #70e000 60%, var(--secondary) 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -335,6 +405,10 @@ body {
   color: var(--cream);
     transform: scale(1.05);
   }
+  .add-btn:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+  }
 
   /* About */
   .about {
@@ -462,6 +536,53 @@ body {
     60% { transform: translateY(-5px); }
   }
 
+  /* Toast animations */
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+
+  /* Loading spinner */
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-green);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  /* Estados de botones mejorados */
+  .btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .btn-loading .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+
   /* Cart Modal */
   .cart-modal {
     display: none;
@@ -539,6 +660,14 @@ body {
     border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
+    transition: all 0.2s ease;
+  }
+  .qty-btn:hover {
+    background: var(--accent);
+    transform: scale(1.1);
+  }
+  .qty-btn:active {
+    transform: scale(0.9);
   }
   .cart-total {
     text-align: center;
@@ -581,6 +710,55 @@ body {
     }
     .products-grid {
       grid-template-columns: 1fr;
+    }
+    
+    /* Mejoras específicas para móviles */
+    .cart-modal {
+      padding: 0.5rem;
+    }
+    
+    .navbar {
+      padding: 0.75rem 1rem;
+    }
+    
+    .whatsapp-btn {
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.25rem;
+      bottom: 1rem;
+      right: 1rem;
+    }
+  }
+
+  /* Utilities adicionales */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Mejoras de accesibilidad para móviles */
+  @media (max-width: 640px) {
+    button, .btn {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    input, textarea, select {
+      min-height: 44px;
+      font-size: 16px; /* Evita zoom en iOS */
+    }
+    
+    .text-xs {
+      font-size: 0.875rem;
     }
   }
 
