@@ -125,7 +125,7 @@ function App() {
         `Te contactaremos pronto para coordinar los detalles.`;
       
       window.open(
-        `https://wa.me/542801234567?text=${msg}`,
+        `https://wa.me/5492804389134?text=${msg}`,
         "_blank"
       );
       
